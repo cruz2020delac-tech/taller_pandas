@@ -16,7 +16,16 @@ def grafico_ventas_por_categoria(df):
     - plt.show() la muestra en pantalla y plt.close() la cierra.
     """
     # TODO 13: dibujar, poner títulos, guardar y mostrar el gráfico.
-    pass
+    SALIDA.mkdir(parents=True, exist_ok=True)
+    datos = df.groupby("categoria")["total"].sum()
+    datos.plot(kind="bar")
+    plt.title("Ventas por Categoría")
+    plt.xlabel("Categoría")
+    plt.ylabel("Total")
+    plt.savefig(SALIDA / "ventas_por_categoria.png", bbox_inches="tight")
+    plt.show()
+    plt.close()
+    
 
 
 def grafico_ventas_por_canal(df):
@@ -25,9 +34,19 @@ def grafico_ventas_por_canal(df):
     Usa los mismos pasos que la función anterior, cambiando la columna "categoria" por "canal".
     """
     # TODO 14: dibujar, poner títulos, guardar y mostrar el gráfico.
-    pass
+    SALIDA.mkdir(parents=True, exist_ok=True)
+    datos = df.groupby("canal")["total"].sum()
+    datos.plot(kind="bar")
+    plt.title("Ventas por Canal")
+    plt.xlabel("Canal")
+    plt.ylabel("Total")
+    plt.savefig(SALIDA / "ventas_por_canal.png", bbox_inches="tight")
+    plt.show()
+    plt.close()
+    
 
 
 def graficar(df):
     grafico_ventas_por_categoria(df)
     grafico_ventas_por_canal(df)
+    
