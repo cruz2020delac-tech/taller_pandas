@@ -38,7 +38,8 @@ def limpiar_ventas(ventas):
 
     # TODO 4: convertir "fecha_venta" a fecha con pd.to_datetime().
     #         Pista: el formato de los datos es AAAA-MM-DD.
-    ventas["fecha_venta"] = pd.to_datetime(ventas["fecha_venta"])
+    ventas["fecha_venta"] = pd.to_datetime(ventas["fecha_venta"], format="%Y-%m-%d", errors="coerce")
+    print(f"[ventas] Fechas no válidas: {ventas['fecha_venta'].isna().sum()}")
 
     # TODO 5: eliminar las filas duplicadas y reiniciar el índice.
     ventas = ventas.drop_duplicates().reset_index(drop=True)

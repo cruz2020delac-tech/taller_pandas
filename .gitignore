@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 Data/processed/*
 !Data/processed/.gitkeep
+!Data/processed/*.csv
